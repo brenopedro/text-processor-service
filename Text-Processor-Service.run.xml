@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Text-Processor-Service" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.algaworks.algaposts.text_processor_service.TextProcessorServiceApplication" />
+    <module name="text-processor-service.main" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/microsservices/text-processor-service" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
