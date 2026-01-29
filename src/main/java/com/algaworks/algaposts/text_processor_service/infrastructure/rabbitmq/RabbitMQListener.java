@@ -1,6 +1,7 @@
 package com.algaworks.algaposts.text_processor_service.infrastructure.rabbitmq;
 
-import com.algaworks.algaposts.text_processor_service.model.PostMessageOutput;
+import com.algaworks.algaposts.text_processor_service.domain.model.PostMessageInput;
+import com.algaworks.algaposts.text_processor_service.domain.service.PostMessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,17 +19,16 @@ import static com.algaworks.algaposts.text_processor_service.infrastructure.rabb
 @RequiredArgsConstructor
 public class RabbitMQListener {
 
-//    private final TemperatureMonitoringService temperatureMonitoringService;
-//    private final SensorAlertService sensorAlertService;
+    private final PostMessageService postMessageService;
 
     @SneakyThrows
     @RabbitListener(queues = TEXT_PROCESSOR_QUEUE, concurrency = "2-3")
-    public void handlePostService(@Payload PostMessageOutput data,
+    public void handlePostService(@Payload PostMessageInput data,
                        @Headers Map<String, Object> headers) {
 
         log.info("Received data: {}", data);
         log.info("Received headers: {}", headers);
 
-//        temperatureMonitoringService.processTemperatureReading(data);
+        postMessageService.sendProcessedMessage(data);
     }
 }
