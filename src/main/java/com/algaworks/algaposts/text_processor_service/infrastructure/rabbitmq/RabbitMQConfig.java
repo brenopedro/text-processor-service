@@ -43,10 +43,12 @@ public class RabbitMQConfig {
 
     @Bean
     public Binding bindingPostService() {
-        return BindingBuilder.bind(queueTextProcessor()).to(exchange());
+        return BindingBuilder.bind(queueTextProcessor())
+                .to(exchange())
+                .with(ROUTING_KEY);
     }
 
-    public FanoutExchange exchange() {
-        return ExchangeBuilder.fanoutExchange(EXCHANGE).build();
+    public DirectExchange exchange() {
+        return ExchangeBuilder.directExchange(EXCHANGE).build();
     }
 }

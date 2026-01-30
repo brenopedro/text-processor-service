@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import static com.algaworks.algaposts.text_processor_service.infrastructure.rabbitmq.RabbitMQQueueConstants.EXCHANGE;
+import static com.algaworks.algaposts.text_processor_service.infrastructure.rabbitmq.RabbitMQQueueConstants.ROUTING_KEY_PROCESSING;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +31,6 @@ public class PostMessageService {
                 .calculatedValue(calculatedValue)
                 .build();
 
-        rabbitTemplate.convertAndSend(EXCHANGE, "", output);
+        rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY_PROCESSING, output);
     }
 }

@@ -1,11 +1,13 @@
 package com.algaworks.algaposts.text_processor_service.domain.model;
 
 import io.hypersistence.tsid.TSID;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostMessageInput {
 
     private TSID postId;
